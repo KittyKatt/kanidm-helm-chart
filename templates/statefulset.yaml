@@ -116,22 +116,22 @@ spec:
             requests:
               cpu: {{ .Values.statefulset.resources.requests.cpu }}
               memory: {{ .Values.statefulset.resources.requests.memory }}
-          volumes:
-            - name: config
-              configMap:
-                name: {{ include "kanidm.name" . }}-config
-            - name: certificates
-              secret:
-                secretName: {{ include "kanidm.tlsSecretName" . }}
-            {{- if .Values.statefulset.storage.existingClaim }}
-            - name: data
-              persistentVolumeClaim:
-                claimName: {{ .Values.statefulset.storage.existingClaim | default "kanidm-data" }}
-            {{- end }}
-            {{- if and (not .Values.statefulset.storage.existingClaim) (not .Values.statefulset.storage.volumeClaimTemplate) }}
-            - name: data
-              emptyDir: {}
-            {{- end }}
+      volumes:
+        - name: config
+          configMap:
+            name: {{ include "kanidm.name" . }}-config
+        - name: certificates
+          secret:
+            secretName: {{ include "kanidm.tlsSecretName" . }}
+        {{- if .Values.statefulset.storage.existingClaim }}
+        - name: data
+          persistentVolumeClaim:
+            claimName: {{ .Values.statefulset.storage.existingClaim | default "kanidm-data" }}
+        {{- end }}
+        {{- if and (not .Values.statefulset.storage.existingClaim) (not .Values.statefulset.storage.volumeClaimTemplate) }}
+        - name: data
+          emptyDir: {}
+        {{- end }}
   {{- if .Values.statefulset.storage.volumeClaimTemplate }}
   volumeClaimTemplates:
   {{- toYaml .Values.statefulset.storage.volumeClaimTemplate | nindent 4 }}
