@@ -48,7 +48,7 @@ kanidm:
     port: 3636
   tls:
     externalCertificateSecret:
-      # -- Enable/disable the use of an external certificate resource (utually exclusive with `kanidm.tls.issuer`)
+      # -- Enable/disable the use of an external certificate resource (mutually exclusive with `kanidm.tls.issuer`)
       # @default -- false
       # @section -- Kanidm Configuration (TLS)
       enabled: false
@@ -183,7 +183,7 @@ statefulset:
     # @default -- IfNotPresent
     # @section -- StatefulSet
     pullPolicy: IfNotPresent
-  # -- Extra environment variables to pass to the kanidm container. Should be in [{"name": name, "value": value}] format
+  # -- Extra environment variables to pass to the kanidm container. Should be in `[{"name": name, "value": value}]` format
   # @default -- []
   # @section -- StatefulSet
   extraEnv: []
@@ -195,7 +195,7 @@ statefulset:
   # @default -- true
   # @section -- StatefulSet
   readinessProbeEnabled: true
-  # -- Extra ports to expose on the kanidm container. Should be in [{"name": name, "containerPort": port}] format
+  # -- Extra ports to expose on the kanidm container. Should be in `[{"name": name, "containerPort": port}]` format
   # @default -- []
   # @section -- StatefulSet
   extraPorts: []
@@ -223,7 +223,7 @@ statefulset:
     # @default -- null
     # @section -- StatefulSet
     existingClaim: null
-    # -- VolumeClaimTemplate to use for kanidm data PVC creation. See [#data-persistence](Data Persistence) for more information
+    # -- VolumeClaimTemplate to use for kanidm data PVC creation. See [Data Persistence][#data-persistence] for more information
     # @default -- {}
     # @section -- StatefulSet
     volumeClaimTemplate: null
