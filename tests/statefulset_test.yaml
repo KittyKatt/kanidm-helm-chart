@@ -76,12 +76,12 @@ tests:
           path: spec.template.spec.containers[0].resources.requests.memory
           value: 50Mi
       - contains:
-          path: spec.template.spec.containers[0].volumes
+          path: spec.template.spec.volumes
           content:
             name: data
             emptyDir: {}
       - contains:
-          path: spec.template.spec.containers[0].volumes
+          path: spec.template.spec.volumes
           content:
             name: certificates
             secret:
@@ -173,7 +173,7 @@ tests:
               add:
                 - ALL
       - contains:
-          path: spec.template.spec.containers[0].volumes
+          path: spec.template.spec.volumes
           content:
             name: data
             persistentVolumeClaim:
@@ -215,3 +215,30 @@ tests:
           content:
             containerPort: 3636
             name: ldaps
+
+  - it: should return volumeClaimTemplate as single element array
+    set:
+      statefulset.storage.volumeClaimTemplate:
+        metadata:
+          name: volume-name
+        spec:
+          accessModes: [ "ReadWriteOnce" ]
+          resources:
+            requests:
+              storage: 10Gi
+          storageClassName: your-storage-class
+    asserts:
+      - isType:
+          path: spec.volumeClaimTemplates
+          type: '[]interface {}'
+      - contains:
+          path: spec.volumeClaimTemplates
+          content:
+            metadata:
+              name: volume-name
+            spec:
+              accessModes: [ "ReadWriteOnce" ]
+              resources:
+                requests:
+                  storage: 10Gi
+              storageClassName: your-storage-class

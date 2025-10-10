@@ -223,7 +223,7 @@ statefulset:
     # @default -- null
     # @section -- StatefulSet
     existingClaim: null
-    # -- VolumeClaimTemplate to use for kanidm data PVC creation. See [Data Persistence][#data-persistence] for more information
+    # -- VolumeClaimTemplate to use for kanidm data PVC creation. See [#data-persistence](Data Persistence) for more information
     # @default -- {}
     # @section -- StatefulSet
     volumeClaimTemplate: null
