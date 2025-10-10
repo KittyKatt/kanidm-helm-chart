@@ -38,8 +38,8 @@ For more specific configuration needs and further explanation of any values, ple
 
 There is no assumption made by this chart by default to give you any data persistence. The default behavior is to mount an `emptyDir: {}` volume at `/data` in the container. This means data will be lost if you restart the StatefulSet/Pod. If you would like to persist your Kanidm data (HIGHLY recommended), you have one of two options:
 
-* Use `kanidm.storage.existingClaim` to specify the name of an existing PersistentVolumeClaim to bind to the pod. This requires you create this and the underlying PersistentVolume ahead of time however you would like.
-* Use `kanidm.storage.volumeClaimTemplate` to use a PersistentVolumeClaimTemplate to generate a PVC and PV for you using the specified StorageClass. Be sure the StorageClass actually exists first.
+* Use `statefulset.storage.existingClaim` to specify the name of an existing PersistentVolumeClaim to bind to the pod. This requires you create this and the underlying PersistentVolume ahead of time however you would like.
+* Use `statefulset.storage.volumeClaimTemplate` to use a PersistentVolumeClaimTemplate to generate a PVC and PV for you using the specified StorageClass. Be sure the StorageClass actually exists first.
 
 VolumeClaimTemplate should follow standard format like the following (customize to your needs):
 
