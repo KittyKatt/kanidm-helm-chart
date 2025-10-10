@@ -134,5 +134,5 @@ spec:
         {{- end }}
   {{- if .Values.statefulset.storage.volumeClaimTemplate }}
   volumeClaimTemplates:
-  {{- toYaml .Values.statefulset.storage.volumeClaimTemplate | nindent 4 }}
+  {{- toYaml (list .Values.statefulset.storage.volumeClaimTemplate) | nindent 4 }}
   {{- end }}
