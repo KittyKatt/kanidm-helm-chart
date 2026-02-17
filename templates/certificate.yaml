@@ -12,7 +12,7 @@ spec:
     {{- toYaml .Values.kanidm.tls.hosts | nindent 4 }}
   {{- with .Values.kanidm.tls.issuer }}
   issuerRef:
-    group: cert-manager.io
+    group: {{ .group | default "cert-manager.io" }}
     kind: {{ .kind }}
     name: {{ .name }}
   {{- end }}
