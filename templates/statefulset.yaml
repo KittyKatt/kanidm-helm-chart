@@ -132,7 +132,7 @@ spec:
         - name: data
           emptyDir: {}
         {{- end }}
-  {{- if .Values.statefulset.storage.volumeClaimTemplate }}
+  {{- if not .Values.statefulset.storage.existingClaim }}
   volumeClaimTemplates:
     metadata:
       name: kanidm-volume
