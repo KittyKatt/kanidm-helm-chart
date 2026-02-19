@@ -134,7 +134,7 @@ spec:
         {{- end }}
   {{- if not .Values.statefulset.storage.existingClaim }}
   volumeClaimTemplates:
-    metadata:
+    - metadata:
       name: kanidm-volume
     spec:
       accessModes: [ "ReadWriteOnce" ]
