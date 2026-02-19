@@ -87,7 +87,7 @@ ingress:
   # -- Enable/disable the creation of an Ingress resource
   # @default -- true
   # @section -- Ingress
-  enabled: true
+  enabled: false
   # -- IngressClass to use
   # @default -- ""
   # @section -- Ingress
