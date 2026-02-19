@@ -134,5 +134,12 @@ spec:
         {{- end }}
   {{- if .Values.statefulset.storage.volumeClaimTemplate }}
   volumeClaimTemplates:
-  {{- toYaml (list .Values.statefulset.storage.volumeClaimTemplate) | nindent 4 }}
+    metadata:
+      name: kanidm-volume
+    spec:
+      accessModes: [ "ReadWriteOnce" ]
+      resources:
+        requests:
+          storage: {{ .Values.statefulset.storage.size }}
+      storageClassName: {{ .Values.statefulset.storage.storageClass }}
   {{- end }}
